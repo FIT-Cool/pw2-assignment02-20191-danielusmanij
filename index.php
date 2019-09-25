@@ -4,10 +4,10 @@ include_once 'db_function/patient_func.php';
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="datatables.min.css">
-        <<script type="text/javascript" src="datatables.min.js"></script>
+        <link rel="stylesheet" href="view/datatables.css">
+        <script type="text/javascript" src="view/datatables.js"></script>
         <meta charset="UTF-8">
-        <title>Daniel Eliezer</title>
+        <title>Asuransi Daniel Eliezer</title>
         <meta name="author" content="Daniel(1772040">
         <meta name="description" content= "PHP navigation and data object"
     </head>
@@ -19,18 +19,24 @@ include_once 'db_function/patient_func.php';
             <nav>
                 <ul>
                     <li><a href="?menu=hm">Insurance</a></li>
-                    <li><a href ="?menu=ab">Patient</a></li>
+                    <li><a href="?menu=ab">Patient</a></li>
                 </ul>
             </nav>
     <main>
         <?php
         $targetMenu=  filter_input(INPUT_GET, 'menu');
                 switch($targetMenu){
-                    case'hm':
+                    case 'hm':
                         include_once 'view/insurance.php';
                         break;
-                    case'ab';
+                    case 'ab':
                         include_once 'view/patient.php';
+                        break;
+                    case 'hmr':
+                        include_once 'view/insurance_update.php';
+                        break;
+                    case 'abr';
+                        include_once 'view/patient_update.php';
                         break;
                     default:
                         include_once 'index.php';
@@ -39,13 +45,14 @@ include_once 'db_function/patient_func.php';
         ?>
     </main>
     </body>
-    <<script >
+    <script >
         $(document).ready(function(){
-            $('#MyTable').DataTable();
+            $('#patient').DataTable();
+            $('#insurance').DataTable();
         });
     </script>
     <footer>
         Pemograman Web 2 Daniel Eliezer(1772040) &copy;2019
     </footer>
-        </div>
+    </div>
 </html>
